@@ -11,9 +11,8 @@
     <!-- Google Fonts (Cairo & Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2 family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom styling to perfectly match the sleek "الكوكا.jpeg" aesthetic -->
     <script>
         tailwind.config = {
             theme: {
@@ -24,12 +23,12 @@
                     },
                     colors: {
                         keo: {
-                            bg: '#f9fafb',
-                            sidebar: '#f3f4f6',
-                            primary: '#111827',
-                            secondary: '#4b5563',
-                            accent: '#3b82f6',
-                            border: '#e5e7eb'
+                            bg: '#fafafa',
+                            sidebar: '#f4f4f5',
+                            primary: '#09090b',
+                            secondary: '#71717a',
+                            accent: '#18181b',
+                            border: '#e4e4e7'
                         }
                     }
                 }
@@ -39,16 +38,9 @@
     <style>
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
-            background-color: #f9fafb;
+            background-color: #fafafa;
         }
-        /* Hide scrollbar for clean aesthetic but allow scrolling */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        /* Custom scrollbar configurations */
         .custom-scrollbar::-webkit-scrollbar {
             width: 4px;
         }
@@ -56,32 +48,32 @@
             background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #d1d5db;
+            background: #e4e4e7;
             border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #9ca3af;
+            background: #d4d4d8;
         }
     </style>
 </head>
 <body class="text-keo-primary min-h-screen flex overflow-hidden">
 
     <!-- Authentication Modal (Google / Email Login) -->
-    <div id="authModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+    <div id="authModal" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
         <div class="bg-white border border-keo-border p-8 rounded-3xl max-w-md w-full shadow-2xl flex flex-col gap-6 relative">
             <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-gray-400 hover:text-gray-600 transition">
-                <i class="fas fa-times text-lg"></i>
+                <i class="fas fa-times text-base"></i>
             </button>
             <div class="text-center">
-                <div class="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto text-keo-primary font-bold text-xl mb-3 border border-keo-border shadow-sm">
+                <div class="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center mx-auto text-white font-bold text-xl mb-3 shadow-sm">
                     K
                 </div>
-                <h3 class="text-lg font-bold text-keo-primary font-cairo">تسجيل الدخول إلى KEO AI</h3>
-                <p class="text-xs text-keo-secondary mt-1">ابدأ بحفظ محادثاتك ومزامنتها سحابياً</p>
+                <h3 class="text-lg font-bold text-keo-primary font-cairo">أهلاً بك في KEO AI</h3>
+                <p class="text-xs text-keo-secondary mt-1">قم بتسجيل الدخول لحفظ جميع محادثاتك ومزامنتها سحابياً</p>
             </div>
 
             <!-- Tabs for Login / Register -->
-            <div class="flex bg-gray-100 p-1 rounded-xl">
+            <div class="flex bg-zinc-100 p-1 rounded-xl">
                 <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 py-2 text-xs font-semibold rounded-lg bg-white shadow-sm transition text-keo-primary">تسجيل الدخول</button>
                 <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 py-2 text-xs font-semibold rounded-lg text-keo-secondary transition">حساب جديد</button>
             </div>
@@ -90,14 +82,14 @@
             <form id="authForm" onsubmit="handleAuthSubmit(event)" class="flex flex-col gap-3">
                 <div class="flex flex-col gap-1 text-right">
                     <label class="text-[11px] font-semibold text-keo-secondary">البريد الإلكتروني</label>
-                    <input type="email" id="authEmail" required class="w-full bg-gray-50 border border-keo-border rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-keo-primary" placeholder="name@domain.com">
+                    <input type="email" id="authEmail" required class="w-full bg-zinc-50 border border-keo-border rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-keo-primary" placeholder="name@domain.com">
                 </div>
                 <div class="flex flex-col gap-1 text-right">
                     <label class="text-[11px] font-semibold text-keo-secondary">كلمة المرور</label>
-                    <input type="password" id="authPassword" required class="w-full bg-gray-50 border border-keo-border rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-keo-primary" placeholder="••••••••">
+                    <input type="password" id="authPassword" required class="w-full bg-zinc-50 border border-keo-border rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-keo-primary" placeholder="••••••••">
                 </div>
-                <button type="submit" id="authSubmitBtn" class="w-full bg-keo-primary hover:bg-gray-800 text-white font-semibold py-2.5 rounded-xl transition text-xs font-cairo mt-2 shadow-sm">
-                    دخول
+                <button type="submit" id="authSubmitBtn" class="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-semibold py-2.5 rounded-xl transition text-xs font-cairo mt-2 shadow-sm">
+                    متابعة
                 </button>
             </form>
 
@@ -108,49 +100,49 @@
             </div>
 
             <!-- Google Sign-In Button -->
-            <button onclick="handleGoogleSignIn()" class="w-full bg-white hover:bg-gray-50 border border-keo-border text-keo-primary font-semibold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-2 shadow-sm">
+            <button onclick="handleGoogleSignIn()" class="w-full bg-white hover:bg-zinc-50 border border-keo-border text-keo-primary font-semibold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-2 shadow-sm">
                 <img src="https://placehold.co/16x16/ffffff/000000?text=G" onerror="this.src='https://www.google.com/favicon.ico'" class="w-4 h-4" alt="Google">
                 <span>متابعة باستخدام Google</span>
             </button>
 
             <!-- Continue as Guest Option -->
             <button onclick="continueAsGuest()" class="text-center text-xs text-keo-secondary hover:text-keo-primary transition underline font-cairo">
-                المتابعة كزائر (بدون حفظ سحابي)
+                المتابعة كزائر سريع (يتم الحفظ محلياً على المتصفح)
             </button>
         </div>
     </div>
 
     <!-- Left Navigation Sidebar -->
-    <aside class="w-64 bg-[#f3f4f6] border-l border-keo-border flex flex-col justify-between shrink-0 h-screen p-4 select-none relative z-40">
+    <aside class="w-64 bg-[#f4f4f5] border-l border-keo-border flex flex-col justify-between shrink-0 h-screen p-4 select-none relative z-40">
         <div class="flex flex-col gap-4">
             
             <!-- Logo & Sidebar Toggle button (matches layout of الكوكا.jpeg) -->
             <div class="flex items-center justify-between mb-2">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-keo-primary flex items-center justify-center text-white font-bold text-sm">
+                    <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white font-bold text-sm">
                         K
                     </div>
                     <span class="font-bold text-sm tracking-tight font-cairo">KEO AI</span>
                 </div>
-                <button class="text-keo-secondary hover:text-keo-primary p-1.5 rounded-lg hover:bg-gray-200/50 transition">
+                <button class="text-keo-secondary hover:text-keo-primary p-1.5 rounded-lg hover:bg-zinc-200/50 transition">
                     <i class="fas fa-columns"></i>
                 </button>
             </div>
 
             <!-- Tabs: Chat / Agent switching as seen in الكوكا.jpeg -->
-            <div class="bg-gray-200/50 p-1 rounded-xl flex gap-1">
+            <div class="bg-zinc-200/50 p-1 rounded-xl flex gap-1">
                 <button class="flex-1 bg-white text-keo-primary py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 shadow-sm transition">
                     <i class="far fa-comments text-xs"></i>
                     <span class="font-cairo">Chat</span>
                 </button>
-                <button onclick="showToast('ميزة الوكيل المخصص قادمة قريباً!')" class="flex-1 text-keo-secondary hover:text-keo-primary py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition">
+                <button onclick="showToast('ميزة الوكيل الذكي قادمة قريباً!')" class="flex-1 text-keo-secondary hover:text-keo-primary py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition">
                     <i class="far fa-user text-xs"></i>
                     <span class="font-cairo">Agent</span>
                 </button>
             </div>
 
             <!-- "+ New Chat" Button -->
-            <button onclick="createNewChat()" class="w-full bg-white hover:bg-gray-50 border border-keo-border hover:border-gray-300 text-keo-primary font-semibold py-2 px-3 rounded-xl transition flex items-center justify-center gap-2 text-xs shadow-sm font-cairo">
+            <button onclick="createNewChat()" class="w-full bg-white hover:bg-zinc-50 border border-keo-border hover:border-gray-300 text-keo-primary font-semibold py-2 px-3 rounded-xl transition flex items-center justify-center gap-2 text-xs shadow-sm font-cairo">
                 <i class="fas fa-plus text-[10px]"></i>
                 <span>محادثة جديدة</span>
             </button>
@@ -158,14 +150,13 @@
             <!-- AI PPT Preset Tab Button -->
             <button onclick="showToast('مستندات العروض التقديمية التلقائية ستتوفر قريباً!')" class="w-full text-keo-secondary hover:text-keo-primary py-1 px-2 rounded-lg text-xs flex items-center gap-2.5 transition text-right">
                 <i class="fas fa-briefcase text-xs"></i>
-                <span class="font-cairo">KEO PPT</span>
+                <span class="font-cairo">AI PPT</span>
             </button>
 
-            <!-- Chat History (Populated dynamically) -->
+            <!-- Chat History (Populated dynamically via Firestore / Local backup) -->
             <div class="flex flex-col gap-3 mt-4">
                 <span class="text-[10px] font-bold text-gray-400 tracking-wider font-cairo block px-2">أرشيف المحادثات</span>
                 <div id="chatsListContainer" class="flex flex-col gap-1 max-h-[220px] overflow-y-auto custom-scrollbar pr-1">
-                    <!-- Loaded dynamically via Firestore or Local memory -->
                     <div class="text-center py-6 text-[11px] text-gray-400 font-cairo">لا توجد محادثات نشطة</div>
                 </div>
             </div>
@@ -178,234 +169,196 @@
                 <button onclick="this.parentElement.remove()" class="absolute top-2 left-2 text-gray-300 hover:text-gray-500 transition text-[10px]">
                     <i class="fas fa-times"></i>
                 </button>
-                <span class="text-[10px] font-bold text-keo-accent font-cairo">تم إطلاق KEO-1.0 الجديد! 🎉</span>
-                <p class="text-[10px] text-keo-secondary leading-normal font-cairo">انقر لاستكشاف وتجربة أقوى إمكانية للرد والنقد وصياغة الأكواد البرمجية.</p>
+                <span class="text-[10px] font-bold text-zinc-900 font-cairo">تم إطلاق تحديث KEO AI! 🎉</span>
+                <p class="text-[10px] text-keo-secondary leading-normal font-cairo">انقر لاستكشاف وتجربة أقوى إمكانية للرد التفاعلي وصياغة الأكواد البرمجية.</p>
                 <div class="grid grid-cols-2 gap-1 mt-1 text-[9px] text-keo-primary font-semibold text-center">
-                    <span class="bg-gray-50 border border-keo-border py-1 px-1.5 rounded-lg">OCR.k.ai</span>
-                    <span class="bg-gray-50 border border-keo-border py-1 px-1.5 rounded-lg">Image.k.ai</span>
-                    <span class="bg-gray-50 border border-keo-border py-1 px-1.5 rounded-lg">Audio.k.ai</span>
-                    <span class="bg-gray-50 border border-keo-border py-1 px-1.5 rounded-lg">AutoClaw</span>
+                    <span class="bg-zinc-50 border border-keo-border py-1 px-1.5 rounded-lg cursor-pointer hover:bg-zinc-100 transition">OCR.keo.ai</span>
+                    <span class="bg-zinc-50 border border-keo-border py-1 px-1.5 rounded-lg cursor-pointer hover:bg-zinc-100 transition">Image.keo.ai</span>
+                    <span class="bg-zinc-50 border border-keo-border py-1 px-1.5 rounded-lg cursor-pointer hover:bg-zinc-100 transition">Audio.keo.ai</span>
+                    <span class="bg-zinc-50 border border-keo-border py-1 px-1.5 rounded-lg cursor-pointer hover:bg-zinc-100 transition">AutoClaw</span>
                 </div>
             </div>
 
-            <!-- Profile Area (from bottom left of image reference) -->
-            <div class="flex items-center justify-between border-t border-keo-border pt-3 mt-1">
-                <div class="flex items-center gap-2.5 cursor-pointer" onclick="openAuthModal()">
-                    <div id="userAvatar" class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-keo-primary text-xs font-bold border border-keo-border shadow-inner">
-                        <i class="fas fa-user-circle text-lg"></i>
+            <!-- Profile Info section as in bottom of الكوكا.jpeg -->
+            <div class="flex items-center justify-between border-t border-keo-border pt-3">
+                <div onclick="openAuthModal()" class="flex items-center gap-2 cursor-pointer group">
+                    <div id="userAvatar" class="w-8 h-8 rounded-full bg-zinc-900 text-white flex items-center justify-center font-bold text-xs">
+                        G
                     </div>
                     <div class="flex flex-col text-right">
-                        <span id="userName" class="text-xs font-bold tracking-tight font-cairo">حساب زائر</span>
-                        <span id="userStatus" class="text-[9px] text-keo-secondary">انقر لتسجيل الدخول</span>
+                        <span id="userName" class="text-xs font-semibold text-keo-primary group-hover:underline">تسجيل الدخول</span>
+                        <span id="userEmail" class="text-[9px] text-keo-secondary truncate w-28">اضغط للحفظ السحابي</span>
                     </div>
                 </div>
-                <button onclick="handleLogout()" id="logoutBtn" class="text-gray-400 hover:text-red-500 transition p-1.5 rounded-lg" title="تسجيل الخروج">
-                    <i class="fas fa-cog text-xs"></i>
+                <button onclick="openSettings()" class="text-keo-secondary hover:text-keo-primary p-1.5 rounded-lg transition" title="الإعدادات">
+                    <i class="fas fa-cog text-sm"></i>
                 </button>
             </div>
         </div>
     </aside>
 
-    <!-- Main Window Space -->
-    <main class="flex-1 flex flex-col h-screen relative bg-keo-bg">
+    <!-- Main Chat Screen Arena -->
+    <main class="flex-1 flex flex-col bg-white relative h-screen">
         
-        <!-- Header Bar -->
-        <header class="h-14 border-b border-keo-border px-6 flex items-center justify-between bg-white/50 backdrop-blur-md sticky top-0 z-30">
-            <!-- Model Dropdown (styled like GLM-5.1 in الكوكا.jpeg) -->
-            <div class="relative">
-                <button onclick="toggleModelMenu()" class="flex items-center gap-2 text-xs font-bold text-keo-primary hover:bg-gray-100 py-1.5 px-3 rounded-xl transition border border-keo-border bg-white shadow-sm font-cairo">
-                    <span id="activeModelName">KEO-1.0 (النموذج الموحد)</span>
-                    <i class="fas fa-chevron-down text-[9px] text-gray-400"></i>
-                </button>
-                <!-- Dropdown Popover list -->
-                <div id="modelDropdown" class="absolute right-0 mt-1.5 w-52 bg-white border border-keo-border rounded-xl shadow-lg hidden flex-col p-1 z-50">
-                    <button onclick="selectModel('keo')" class="w-full text-right text-xs p-2 rounded-lg bg-gray-50 font-bold hover:bg-gray-50 flex items-center justify-between">
-                        <span>KEO-1.0 (افتراضي سريع)</span>
-                        <i class="fas fa-check text-keo-accent text-[10px]"></i>
+        <!-- Top Navigation bar in main area -->
+        <header class="h-14 border-b border-keo-border px-6 flex items-center justify-between bg-white/80 backdrop-blur-md z-30 select-none shrink-0">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <button onclick="toggleModelDropdown()" id="modelSelectBtn" class="flex items-center gap-1.5 text-sm font-bold text-zinc-900 hover:bg-zinc-100 px-3 py-1.5 rounded-xl transition">
+                        <span>KEO-5.1</span>
+                        <i class="fas fa-chevron-down text-[10px] text-zinc-400"></i>
                     </button>
-                    <button onclick="showToast('النموذج المتعمق DeepThink سيتاح لاحقاً!')" class="w-full text-right text-xs p-2 rounded-lg text-gray-400 hover:bg-gray-50 flex items-center justify-between">
-                        <span>KEO Pro (Deep Think)</span>
-                        <i class="fas fa-lock text-[10px]"></i>
-                    </button>
+                    <!-- Model selector dropdown menu -->
+                    <div id="modelDropdown" class="absolute right-0 mt-2 w-48 bg-white border border-keo-border rounded-2xl shadow-xl p-1.5 hidden flex-col gap-1 z-50">
+                        <button onclick="selectModel('KEO-5.1')" class="w-full text-right px-3 py-2 text-xs rounded-xl bg-zinc-50 font-bold text-zinc-900">KEO-5.1 (افتراضي)</button>
+                        <button onclick="selectModel('KEO-Pro')" class="w-full text-right px-3 py-2 text-xs rounded-xl hover:bg-zinc-50 text-zinc-600">KEO Pro (تحليلي)</button>
+                        <button onclick="selectModel('KEO-Fast')" class="w-full text-right px-3 py-2 text-xs rounded-xl hover:bg-zinc-50 text-zinc-600">KEO Fast (سريع جداً)</button>
+                    </div>
                 </div>
             </div>
-
-            <!-- API / Custom Key Settings Integration -->
+            
             <div class="flex items-center gap-3">
-                <!-- Simple voice response toggle -->
-                <div class="flex items-center gap-1.5 bg-gray-100 px-2 py-1.5 rounded-xl border border-keo-border">
-                    <span class="text-[10px] font-bold text-keo-secondary font-cairo">الرد الصوتي لـ Keo</span>
-                    <input type="checkbox" id="voiceToggle" class="accent-keo-primary w-3.5 h-3.5 rounded cursor-pointer">
-                </div>
-
-                <a href="https://console.groq.com" target="_blank" class="text-xs text-keo-secondary hover:text-keo-primary font-semibold flex items-center gap-1 font-cairo transition">
-                    API <i class="fas fa-external-link-alt text-[9px]"></i>
-                </a>
+                <span class="text-xs text-zinc-400 font-semibold font-mono">Status: Connected</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
             </div>
         </header>
 
-        <!-- Dynamic Content Space (Switches between Initial Landing and Chat History) -->
-        <div class="flex-1 overflow-y-auto custom-scrollbar px-4 py-8 flex flex-col items-center">
+        <!-- Dynamic Chat History Container & Prompt Landing Grid -->
+        <div class="flex-1 overflow-y-auto custom-scrollbar flex flex-col" id="chatArenaScroll">
             
-            <!-- Welcome / Landing State (styled precisely like الكوكا.jpeg) -->
-            <div id="welcomeState" class="max-w-2xl w-full flex flex-col items-center justify-center text-center my-auto py-8">
+            <!-- Welcome Screen Layout (matches exactly "What can I build for you?" layout in الكوكا.jpeg) -->
+            <div id="welcomeContainer" class="flex-1 flex flex-col items-center justify-center px-6 py-12 max-w-3xl mx-auto w-full select-none">
                 
-                <!-- Huge beautiful background branding watermark matching الكوكا.jpeg -->
-                <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none z-0">
-                    <span class="text-[18vw] font-black tracking-tighter">KEO AI</span>
+                <!-- Large Subtle background KEO logo watermark -->
+                <div class="w-24 h-24 bg-zinc-50 border border-keo-border rounded-3xl flex items-center justify-center text-zinc-900 text-4xl font-extrabold shadow-sm mb-6 animate-pulse">
+                    K
                 </div>
 
-                <!-- Main prominent central headline -->
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-keo-primary font-cairo mb-3 z-10">
-                    كيف يمكنني مساعدتك اليوم؟
-                </h2>
-                <p class="text-xs md:text-sm text-keo-secondary font-cairo mb-8 z-10">
-                    تفاعل مع keo.ai واستكشف عالمًا إبداعيًا بلا حدود يعيد صياغة أفكارك
-                </p>
+                <h2 class="text-4xl font-extrabold text-zinc-900 text-center font-cairo mb-3 select-text">What can I build for you?</h2>
+                <p class="text-zinc-500 text-sm text-center mb-10 font-cairo select-text">تفاعل مع كيو واكتشف آفاقاً لامتناهية من الإبداع والحلول البرمجية الفائقة</p>
 
-                <!-- Input Prompt Box Card (exactly styled after screenshot) -->
-                <div class="w-full bg-white border border-keo-border rounded-2xl shadow-md p-3 flex flex-col gap-2 relative z-10 mb-6 focus-within:border-gray-400 transition-all">
-                    <textarea id="promptInput" rows="3" 
-                              class="w-full resize-none text-xs text-keo-primary placeholder-gray-400 focus:outline-none pr-3 py-1 text-right"
-                              placeholder="اسألني عن أي شيء، كتابة الكود، ترجمة، أو تلخيص نصوص..."></textarea>
+                <!-- Centered Input Console for Prompt Box -->
+                <div class="w-full bg-white border border-zinc-200 hover:border-zinc-300 focus-within:border-zinc-400 focus-within:ring-1 focus-within:ring-zinc-400 rounded-3xl shadow-sm p-3.5 flex flex-col gap-3 transition-all duration-300 mb-8 max-w-2xl relative">
+                    <textarea id="promptInput" rows="3" onkeydown="handleTextareaKey(event)"
+                              class="w-full bg-transparent resize-none text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-0 leading-relaxed text-right pr-2" 
+                              placeholder="كيف يمكنني مساعدتك اليوم؟"></textarea>
                     
-                    <div class="flex items-center justify-between border-t border-gray-100 pt-3">
-                        <!-- Action tool buttons on the left inside input box -->
+                    <div class="flex items-center justify-between border-t border-zinc-100 pt-2.5">
                         <div class="flex items-center gap-2">
-                            <button onclick="triggerVoiceRecognition()" id="voiceRecBtn" class="w-8 h-8 rounded-lg bg-gray-50 border border-keo-border hover:bg-gray-100 flex items-center justify-center text-keo-secondary hover:text-keo-primary transition relative" title="تحدث بصوتك">
-                                <i id="micIcon" class="fas fa-microphone text-xs"></i>
-                                <span id="micPulse" class="absolute inset-0 rounded-lg bg-red-400/20 animate-ping hidden"></span>
-                            </button>
-                            <button onclick="showToast('ميزة إرفاق الملفات ستتوفر قريباً!')" class="w-8 h-8 rounded-lg bg-gray-50 border border-keo-border hover:bg-gray-100 flex items-center justify-center text-keo-secondary transition" title="إرفاق ملف">
+                            <!-- Plus Tool icon -->
+                            <button onclick="showToast('ميزة رفع الملفات قريباً')" class="w-8 h-8 rounded-full hover:bg-zinc-100 transition text-zinc-500 hover:text-zinc-800 flex items-center justify-center" title="إرفاق ملف">
                                 <i class="fas fa-plus text-xs"></i>
                             </button>
-                            <button onclick="showToast('تم تفعيل البحث الويب الذكي التلقائي!')" class="w-8 h-8 rounded-lg bg-gray-50 border border-keo-border hover:bg-gray-100 flex items-center justify-center text-keo-secondary transition" title="البحث عبر الويب">
+                            <!-- Search Icon -->
+                            <button id="webSearchToggle" onclick="toggleWebSearch()" class="w-8 h-8 rounded-full hover:bg-zinc-100 transition text-zinc-500 hover:text-zinc-800 flex items-center justify-center" title="البحث في الويب">
                                 <i class="fas fa-globe text-xs"></i>
                             </button>
-                            <button onclick="showToast('تم تفعيل محرك تفكير KEO العميق!')" class="w-8 h-8 rounded-lg bg-gray-50 border border-keo-border hover:bg-gray-100 flex items-center justify-center text-keo-accent transition" title="تحليل معمق">
-                                <i class="fas fa-atom text-xs"></i>
+                            <!-- Mic Icon -->
+                            <button id="micBtn" onclick="toggleSpeech()" class="w-8 h-8 rounded-full hover:bg-zinc-100 transition text-zinc-500 hover:text-zinc-800 flex items-center justify-center relative" title="تحدث">
+                                <i id="micIcon" class="fas fa-microphone text-xs"></i>
+                                <span id="micWave" class="absolute inset-0 rounded-full bg-zinc-900/10 animate-ping hidden"></span>
                             </button>
                         </div>
                         
-                        <!-- Send trigger -->
-                        <button onclick="submitPrompt()" id="sendBtn" class="w-8 h-8 rounded-full bg-keo-primary hover:bg-gray-800 text-white flex items-center justify-center transition shadow-sm">
+                        <button onclick="sendMessage()" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-zinc-800 text-white flex items-center justify-center transition shadow-sm">
                             <i class="fas fa-arrow-up text-xs"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Suggestions pills from the bottom of the screenshot input -->
-                <div class="flex flex-wrap justify-center gap-2 mb-10 z-10">
-                    <button onclick="applySuggestion('إنشاء صفحة هبوط Landing Page عصرية وجميلة')" class="bg-gray-100 hover:bg-gray-200/80 border border-keo-border text-keo-secondary py-1 px-3.5 rounded-full text-[10px] font-semibold transition font-cairo">Landing Page</button>
-                    <button onclick="applySuggestion('شرح فكرة علمية معقدة بأسلوب تعليمي مبسط')" class="bg-gray-100 hover:bg-gray-200/80 border border-keo-border text-keo-secondary py-1 px-3.5 rounded-full text-[10px] font-semibold transition font-cairo">Knowledge/Teaching</button>
-                    <button onclick="applySuggestion('اكتب خطة عمل أو كود للعبة ويب مصغرة Mini Game')" class="bg-gray-100 hover:bg-gray-200/80 border border-keo-border text-keo-secondary py-1 px-3.5 rounded-full text-[10px] font-semibold transition font-cairo">Mini Game</button>
-                    <button onclick="applySuggestion('أفكار وتخطيط لكتابة مدونة شخصية مميزة Personal Blog')" class="bg-gray-100 hover:bg-gray-200/80 border border-keo-border text-keo-secondary py-1 px-3.5 rounded-full text-[10px] font-semibold transition font-cairo">Personal Blog</button>
+                <!-- Template quick pill shortcuts as shown in the mockup image -->
+                <div class="flex items-center justify-center gap-2 flex-wrap mb-10 max-w-xl">
+                    <button onclick="applyPreset('صفحة هبوط احترافية لمشروع تسويق عقاري')" class="bg-zinc-100/70 hover:bg-zinc-100 border border-zinc-200/50 text-xs px-3.5 py-1.5 rounded-full transition text-zinc-600 font-semibold font-cairo">Landing Page</button>
+                    <button onclick="applyPreset('خطة تدريب ومصادر لتعلم هندسة الذكاء الاصطناعي')" class="bg-zinc-100/70 hover:bg-zinc-100 border border-zinc-200/50 text-xs px-3.5 py-1.5 rounded-full transition text-zinc-600 font-semibold font-cairo">Knowledge/Teaching Material</button>
+                    <button onclick="applyPreset('شرح تفصيلي لتصميم بيئة ثلاثية الأبعاد')" class="bg-zinc-100/70 hover:bg-zinc-100 border border-zinc-200/50 text-xs px-3.5 py-1.5 rounded-full transition text-zinc-600 font-semibold font-cairo">3D Modeling</button>
+                    <button onclick="applyPreset('اكتب كود كامل للعبة XO بسيطة جداً بالبايثون')" class="bg-zinc-100/70 hover:bg-zinc-100 border border-zinc-200/50 text-xs px-3.5 py-1.5 rounded-full transition text-zinc-600 font-semibold font-cairo">Mini Game</button>
+                    <button onclick="applyPreset('تأليف مقال قصير ومميز عن الهدوء النفسي والتركيز')" class="bg-zinc-100/70 hover:bg-zinc-100 border border-zinc-200/50 text-xs px-3.5 py-1.5 rounded-full transition text-zinc-600 font-semibold font-cairo">Personal Blog</button>
                 </div>
 
-                <!-- Premium showcase cards grid displaying templates matching bottom of الكوكا.jpeg -->
-                <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 text-right mt-2 z-10">
-                    
-                    <!-- Stillwater card replica -->
-                    <div class="border border-keo-border bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col gap-2 relative overflow-hidden group">
-                        <div class="h-24 bg-gray-50 border border-keo-border rounded-xl flex items-center justify-center text-xs text-gray-400 font-bold tracking-widest relative overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-sky-100/40 to-indigo-100/30 opacity-70"></div>
-                            <span class="z-10 group-hover:scale-105 transition duration-300">STILLWATER TEMPLATE</span>
+                <!-- Suggested Visual Card previews shown below prompt -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mt-4">
+                    <div onclick="applyPreset('تصميم تطبيق تتبع رياضي')" class="bg-white border border-keo-border p-4 rounded-2xl hover:border-zinc-300 transition cursor-pointer flex flex-col gap-3 group">
+                        <div class="w-full h-24 bg-zinc-50 border border-keo-border rounded-xl flex items-center justify-center overflow-hidden">
+                            <span class="text-xs text-zinc-400 font-semibold">تطبيقات صحية</span>
                         </div>
-                        <h4 class="text-xs font-bold text-keo-primary font-cairo">تصميم صفحات هبوط هادئة</h4>
-                        <p class="text-[10px] text-keo-secondary font-cairo leading-normal">محاكاة وبناء واجهات مستخدم نظيفة ومتكاملة تعتمد الألوان الصامتة الهادئة.</p>
+                        <span class="text-xs font-bold text-zinc-800 group-hover:underline text-right block">تصميم وبرمجة تطبيقات اللياقة البدنية</span>
                     </div>
-
-                    <!-- Built by discipline replica -->
-                    <div class="border border-keo-border bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col gap-2 relative overflow-hidden group">
-                        <div class="h-24 bg-gray-50 border border-keo-border rounded-xl flex items-center justify-center text-xs text-gray-400 font-bold tracking-widest relative overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-amber-50/40 to-orange-100/30 opacity-70"></div>
-                            <span class="z-10 group-hover:scale-105 transition duration-300">BUILT BY DISCIPLINE</span>
+                    <div onclick="applyPreset('أدوات تحليل البيانات')" class="bg-white border border-keo-border p-4 rounded-2xl hover:border-zinc-300 transition cursor-pointer flex flex-col gap-3 group">
+                        <div class="w-full h-24 bg-zinc-50 border border-keo-border rounded-xl flex items-center justify-center overflow-hidden">
+                            <span class="text-xs text-zinc-400 font-semibold">تحليل بياني مالي</span>
                         </div>
-                        <h4 class="text-xs font-bold text-keo-primary font-cairo">هندسة أكواد ومشاريع كاملة</h4>
-                        <p class="text-[10px] text-keo-secondary font-cairo leading-normal">تنظيم وهيكلة الملفات البرمجية بطرق احترافية وصياغة برمجيات خالية من الثغرات.</p>
+                        <span class="text-xs font-bold text-zinc-800 group-hover:underline text-right block">بناء لوحات تحكم مالية وتفاعلية</span>
                     </div>
-
-                    <!-- Severin replica -->
-                    <div class="border border-keo-border bg-white p-4 rounded-2xl shadow-sm hover:shadow-md transition flex flex-col gap-2 relative overflow-hidden group">
-                        <div class="h-24 bg-gray-50 border border-keo-border rounded-xl flex items-center justify-center text-xs text-gray-400 font-bold tracking-widest relative overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-emerald-50/40 to-teal-100/30 opacity-70"></div>
-                            <span class="z-10 group-hover:scale-105 transition duration-300">SEVERIN SYSTEM</span>
+                    <div onclick="applyPreset('برمجة ألعاب الويب')" class="bg-white border border-keo-border p-4 rounded-2xl hover:border-zinc-300 transition cursor-pointer flex flex-col gap-3 group">
+                        <div class="w-full h-24 bg-zinc-50 border border-keo-border rounded-xl flex items-center justify-center overflow-hidden">
+                            <span class="text-xs text-zinc-400 font-semibold">ألعاب جافاسكريبت</span>
                         </div>
-                        <h4 class="text-xs font-bold text-keo-primary font-cairo">صناعة وكتابة استراتيجيات تسويق</h4>
-                        <p class="text-[10px] text-keo-secondary font-cairo leading-normal">تقديم محتوى تحليلي ونقدي شامل مع خطط تفصيلية لتطوير الأعمال محلياً وعالمياً.</p>
+                        <span class="text-xs font-bold text-zinc-800 group-hover:underline text-right block">ألعاب ويب متكاملة ثنائية الأبعاد</span>
                     </div>
-
                 </div>
 
             </div>
 
-            <!-- Active Chat Screen State (Hidden by default) -->
-            <div id="chatState" class="max-w-3xl w-full flex flex-col gap-6 hidden flex-1">
-                <div id="messagesContainer" class="flex flex-col gap-6 flex-1 mb-24">
-                    <!-- Loaded dynamically via conversation thread -->
-                </div>
+            <!-- Active Chat Conversation Messages List Container -->
+            <div id="messagesContainer" class="flex-1 w-full max-w-3xl mx-auto px-6 py-6 space-y-6 hidden flex flex-col justify-end">
+                <!-- Dynamically populated via javascript -->
             </div>
 
         </div>
 
-        <!-- Float Interactive Input box for ongoing chat (Visible only when chatState is active) -->
-        <div id="floatingChatInputBar" class="absolute bottom-6 left-1/2 -translate-x-1/2 max-w-2xl w-full px-4 hidden z-30">
-            <div class="bg-white border border-keo-border rounded-2xl shadow-lg p-3 flex flex-col gap-2 focus-within:border-gray-400 transition-all">
-                <textarea id="floatingPromptInput" rows="2" 
-                          class="w-full resize-none text-xs text-keo-primary placeholder-gray-400 focus:outline-none pr-3 py-1 text-right"
-                          placeholder="اكتب ردك أو سؤالك التالي لـ KEO..."></textarea>
-                
-                <div class="flex items-center justify-between border-t border-gray-100 pt-3">
-                    <div class="flex items-center gap-2">
-                        <button onclick="triggerVoiceRecognition()" id="floatingVoiceRecBtn" class="w-8 h-8 rounded-lg bg-gray-50 border border-keo-border hover:bg-gray-100 flex items-center justify-center text-keo-secondary hover:text-keo-primary transition relative" title="تحدث بصوتك">
-                            <i id="floatingMicIcon" class="fas fa-microphone text-xs"></i>
-                            <span id="floatingMicPulse" class="absolute inset-0 rounded-lg bg-red-400/20 animate-ping hidden"></span>
-                        </button>
-                        <button onclick="showToast('ميزة إرفاق الملفات ستتوفر قريباً!')" class="w-8 h-8 rounded-lg bg-gray-50 border border-keo-border hover:bg-gray-100 flex items-center justify-center text-keo-secondary transition">
-                            <i class="fas fa-plus text-xs"></i>
-                        </button>
-                    </div>
-                    
-                    <button onclick="submitPrompt(true)" id="floatingSendBtn" class="w-8 h-8 rounded-full bg-keo-primary hover:bg-gray-800 text-white flex items-center justify-center transition shadow-sm">
-                        <i class="fas fa-arrow-up text-xs"></i>
-                    </button>
-                </div>
+        <!-- Sticky Chat Input Bar at the bottom of active conversations -->
+        <div id="activeInputContainer" class="p-4 border-t border-keo-border bg-white hidden z-30 shrink-0">
+            <div class="max-w-2xl mx-auto bg-white border border-zinc-200 rounded-2xl p-2 flex items-center gap-2 focus-within:border-zinc-400 focus-within:ring-1 focus-within:ring-zinc-400 transition-all">
+                <button onclick="toggleSpeech()" class="w-9 h-9 rounded-xl hover:bg-zinc-100 flex items-center justify-center text-zinc-500 transition relative">
+                    <i id="activeMicIcon" class="fas fa-microphone"></i>
+                </button>
+                <input type="text" id="activePromptInput" onkeydown="handleActiveInputKey(event)"
+                       class="flex-1 bg-transparent border-0 focus:outline-none focus:ring-0 text-xs px-2 text-right" 
+                       placeholder="اكتب ردك أو سؤالك التالي لـ كيو...">
+                <button onclick="sendActiveMessage()" class="w-9 h-9 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white flex items-center justify-center transition">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                </button>
             </div>
         </div>
 
     </main>
 
-    <!-- Interactive voice player widget on bottom right -->
-    <div id="voiceOverlay" class="fixed bottom-6 right-6 bg-white border border-keo-border p-3 rounded-2xl shadow-xl z-50 hidden flex-col gap-2 max-w-xs transition-all border-r-4 border-r-keo-primary">
-        <div class="flex items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-                <span class="flex h-2.5 w-2.5 relative">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-keo-primary opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-keo-primary"></span>
-                </span>
-                <span class="text-[11px] font-bold text-keo-primary font-cairo">KEO يتحدث الآن...</span>
+    <!-- Settings Overlay dialog modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white border border-keo-border rounded-3xl p-6 max-w-sm w-full shadow-2xl flex flex-col gap-5">
+            <h3 class="text-sm font-bold text-zinc-900 flex items-center gap-2">
+                <i class="fas fa-cog text-zinc-400"></i> إعدادات منصة KEO AI
+            </h3>
+            <div class="flex flex-col gap-3">
+                <div class="flex items-center justify-between text-xs text-zinc-600">
+                    <span>قراءة مخرجات كيو صوتياً (TTS)</span>
+                    <input type="checkbox" id="ttsEnabled" checked class="accent-zinc-900 w-4 h-4 rounded">
+                </div>
+                <div class="flex items-center justify-between text-xs text-zinc-600">
+                    <span>بحث تلقائي في الويب</span>
+                    <input type="checkbox" id="webSearchDefault" class="accent-zinc-900 w-4 h-4 rounded">
+                </div>
             </div>
-            <button onclick="stopVoiceSynthesis()" class="text-[10px] text-gray-500 hover:text-red-500 bg-gray-50 px-2 py-0.5 rounded border border-keo-border" title="كتم الصوت">
-                <i class="fas fa-volume-mute"></i> كتم
-            </button>
+            <div class="flex gap-2">
+                <button onclick="handleSignOut()" class="flex-1 bg-red-50 text-red-600 border border-red-100 hover:bg-red-100/50 py-2 rounded-xl text-xs font-semibold transition">تسجيل الخروج</button>
+                <button onclick="closeSettings()" class="flex-1 bg-zinc-100 hover:bg-zinc-200/70 text-zinc-800 py-2 rounded-xl text-xs font-semibold transition">إغلاق</button>
+            </div>
         </div>
     </div>
 
-    <!-- Notification Toast Widget -->
-    <div id="toast" class="fixed bottom-6 left-6 bg-keo-primary text-white border border-keo-primary px-4 py-3 rounded-2xl shadow-xl z-[95] hidden items-center gap-3 max-w-sm transition-all duration-300">
-        <div class="w-6 h-6 rounded-lg bg-white/20 flex items-center justify-center">
-            <i class="fas fa-info-circle text-xs"></i>
-        </div>
-        <p id="toastMessage" class="text-xs font-cairo leading-snug"></p>
+    <!-- Toast elements -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-zinc-900 text-white border border-zinc-800 px-4 py-3 rounded-2xl shadow-xl z-50 hidden items-center gap-3 max-w-xs transition-all">
+        <i class="fas fa-info-circle text-zinc-400"></i>
+        <p id="toastMessage" class="text-xs leading-snug"></p>
     </div>
 
-    <!-- Core Firebase SDK and Platform Actions -->
+    <!-- Firebase core logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs, arrayUnion } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration as provided by user
+        // Your provided Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCPzEsTHZFhjE58dafiO7Yah1hzyLk8pas",
             authDomain: "kimoup1.firebaseapp.com",
@@ -416,672 +369,644 @@
             measurementId: "G-4S0EQHTYH0"
         };
 
-        // Initialize Firebase instances
+        // Initialize Firebase services
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
 
-        // Global State Variables
-        let currentUser = null;
+        // Global state structures
+        let user = null;
         let activeChatId = null;
-        let activeChatsList = [];
-        let speechRecognition = null;
-        let isListening = false;
-        let speechUtterance = null;
-        let isGuestMode = false;
-        const groqApiKey = "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"; // User provided Key
+        let chats = []; // Store the chats locally to prevent UI flickers or disappearance on refresh
+        let isWebSearchActive = false;
 
-        // Application Identifier configuration for strict FireStore rules compliance
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'kimoup1';
-
-        // Initialize Speech recognition
-        initSpeechRecognition();
-
-        // Listen for Authentication state changes
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                currentUser = user;
-                isGuestMode = user.isAnonymous;
-                updateUserProfileUI(user);
-                listenToChatsCollection();
-            } else {
-                // If not signed in at all, prompt login modal to allow Guest or full credentials
-                openAuthModal();
+        // Ensure we load and backup from LocalStorage instantly to bypass slow network fetches
+        function loadLocalChatsBackup() {
+            const backup = localStorage.getItem('keo_chats_backup');
+            if (backup) {
+                try {
+                    chats = JSON.parse(backup);
+                    renderChatsList();
+                } catch(e) {
+                    console.error("Local backup corrupt", e);
+                }
             }
+        }
+
+        // Save layout to LocalStorage instantly
+        function saveLocalChatsBackup() {
+            localStorage.setItem('keo_chats_backup', JSON.stringify(chats));
+        }
+
+        // Initialize Auth listener
+        window.addEventListener('load', () => {
+            loadLocalChatsBackup();
+            
+            onAuthStateChanged(auth, async (currentUser) => {
+                user = currentUser;
+                if (user) {
+                    // Authenticated successfully
+                    updateUserUI(user);
+                    closeAuthModal();
+                    // Load and sync real-time database
+                    syncChatsFromFirestore();
+                } else {
+                    // Fallback automatically to guest token, but allow manual logging later
+                    try {
+                        await signInAnonymously(auth);
+                    } catch(e) {
+                        console.error("Auth default anonymous error", e);
+                    }
+                }
+            });
         });
 
-        // Toggle authentication tabs
-        window.switchAuthTab = function(tab) {
-            const tabLogin = document.getElementById('tabLogin');
-            const tabRegister = document.getElementById('tabRegister');
-            const submitBtn = document.getElementById('authSubmitBtn');
+        // Real-time synchronization using strict paths: /artifacts/{appId}/users/{userId}/chats
+        let unsubscribeChats = null;
+        function syncChatsFromFirestore() {
+            if (!user) return;
             
-            if (tab === 'login') {
-                tabLogin.className = "flex-1 py-2 text-xs font-semibold rounded-lg bg-white shadow-sm transition text-keo-primary";
-                tabRegister.className = "flex-1 py-2 text-xs font-semibold rounded-lg text-keo-secondary transition";
-                submitBtn.innerText = "دخول";
-                submitBtn.dataset.mode = 'login';
-            } else {
-                tabRegister.className = "flex-1 py-2 text-xs font-semibold rounded-lg bg-white shadow-sm transition text-keo-primary";
-                tabLogin.className = "flex-1 py-2 text-xs font-semibold rounded-lg text-keo-secondary transition";
-                submitBtn.innerText = "إنشاء حساب جديد";
-                submitBtn.dataset.mode = 'register';
-            }
-        };
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'keo-ai-app';
+            const chatsColRef = collection(db, 'artifacts', appId, 'users', user.uid, 'chats');
+            
+            // Unsubscribe existing listeners
+            if (unsubscribeChats) unsubscribeChats();
 
-        // Handle Email Login and Signup submissions
-        window.handleAuthSubmit = async function(e) {
+            unsubscribeChats = onSnapshot(chatsColRef, (snapshot) => {
+                const tempChats = [];
+                snapshot.forEach(doc => {
+                    tempChats.push({ id: doc.id, ...doc.data() });
+                });
+                // Sort chats by latest update
+                tempChats.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+                
+                chats = tempChats;
+                saveLocalChatsBackup();
+                renderChatsList();
+                
+                // If there's an active chat, render its messages
+                if (activeChatId) {
+                    renderActiveChatMessages();
+                }
+            }, (error) => {
+                console.error("Firestore sync error", error);
+            });
+        }
+
+        // Create Chat flow
+        async function createNewChat(initialTitle = "محادثة جديدة") {
+            const chatId = 'chat_' + Date.now();
+            const newChatData = {
+                id: chatId,
+                title: initialTitle,
+                messages: [],
+                createdAt: Date.now(),
+                updatedAt: Date.now()
+            };
+
+            // Push locally for instant execution
+            chats.unshift(newChatData);
+            saveLocalChatsBackup();
+            renderChatsList();
+            setActiveChat(chatId);
+
+            // Sync with Firestore in background if authenticated
+            if (user) {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'keo-ai-app';
+                const chatDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'chats', chatId);
+                try {
+                    await setDoc(chatDocRef, newChatData);
+                } catch(e) {
+                    console.error("Firebase save chat failed", e);
+                }
+            }
+        }
+
+        // Save message inside current active chat flow
+        async function saveMessageToFirestore(role, text) {
+            if (!activeChatId) return;
+
+            const chat = chats.find(c => c.id === activeChatId);
+            if (!chat) return;
+
+            const newMessage = {
+                role: role,
+                content: text,
+                timestamp: Date.now()
+            };
+
+            // Push to local memory to render instantly
+            chat.messages.push(newMessage);
+            chat.updatedAt = Date.now();
+            
+            // If it is the very first message, rename chat title dynamically
+            if (chat.messages.length === 1 && chat.title === "محادثة جديدة") {
+                chat.title = text.substring(0, 30) + (text.length > 30 ? '...' : '');
+            }
+
+            saveLocalChatsBackup();
+            renderChatsList();
+            renderActiveChatMessages();
+
+            // Sync with Firestore
+            if (user) {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'keo-ai-app';
+                const chatDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'chats', activeChatId);
+                try {
+                    await setDoc(chatDocRef, {
+                        title: chat.title,
+                        messages: chat.messages,
+                        updatedAt: Date.now()
+                    }, { merge: true });
+                } catch(e) {
+                    console.error("Firestore save message error", e);
+                }
+            }
+        }
+
+        // Hardcoded API Key for underlying AI execution (securely processed but named 'KEO AI')
+        const hiddenApiKey = "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";
+
+        async function queryKEOAI(userMessageText) {
+            const url = "https://api.groq.com/openai/v1/chat/completions";
+            const chat = chats.find(c => c.id === activeChatId);
+            const history = chat ? chat.messages : [];
+
+            // Compile system parameters
+            let systemPrompt = "أنت ذكاء اصطناعي ذكي، هادئ ومحترف للغاية تدعى كيو (KEO AI). تجيب على جميع الاستفسارات والمهام والمشاكل البرمجية باللغة العربية بشكل افتراضي مالم يطلب منك لغة أخرى. أسلوبك يتميز بالبساطة والعمق العلمي الفني المتكامل.";
+            if (isWebSearchActive) {
+                systemPrompt += " بالإضافة إلى قدراتك، تظاهر بأنك قمت بالبحث الفوري في شبكة الإنترنت لجلب آخر المعلومات المتعلقة بـ: " + userMessageText;
+            }
+
+            // Build historical context payload
+            const messagesPayload = [
+                { role: "system", content: systemPrompt }
+            ];
+
+            // Add previous message logs for multi-turn conversations
+            history.forEach(msg => {
+                messagesPayload.push({ role: msg.role, content: msg.content });
+            });
+
+            // Call groq API under the hood
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${hiddenApiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: "llama-3.3-70b-versatile",
+                        messages: messagesPayload,
+                        temperature: 0.7,
+                        max_tokens: 1500
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error("سيرفرات كيو تواجه ضغطاً مؤقتاً، يرجى المحاولة مجدداً.");
+                }
+
+                const data = await response.json();
+                return data.choices[0].message.content.trim();
+            } catch(e) {
+                console.error("AI execution error", e);
+                return "عذراً يا صديقي، واجه كيو مشكلة أثناء محاولة الاتصال بالشبكة. يرجى التحقق من اتصالك بالإنترنت والمحاولة مجدداً.";
+            }
+        }
+
+        // Optimized Send Message workflow
+        async function processNewMessage(inputText) {
+            if (!inputText.trim()) return;
+
+            // 1. Create a chat session if none exists
+            if (!activeChatId) {
+                await createNewChat(inputText.substring(0, 30) + (inputText.length > 30 ? '...' : ''));
+            }
+
+            // 2. Optimistic Rendering: Render user message instantly
+            await saveMessageToFirestore("user", inputText);
+            
+            // 3. Render Typing loader indicator instantly
+            appendTypingIndicator();
+
+            // 4. Query AI
+            const aiResponse = await queryKEOAI(inputText);
+
+            // 5. Remove typing indicator & Save AI Response
+            removeTypingIndicator();
+            await saveMessageToFirestore("assistant", aiResponse);
+
+            // Speak response if enabled
+            if (document.getElementById('ttsEnabled').checked) {
+                speakText(aiResponse);
+            }
+        }
+
+        // Delete active chat
+        async function deleteChatSession(chatId, event) {
+            if (event) event.stopPropagation();
+            if (!confirm("هل أنت متأكد من رغبتك في حذف هذه المحادثة نهائياً؟")) return;
+
+            // Remove locally
+            chats = chats.filter(c => c.id !== chatId);
+            saveLocalChatsBackup();
+            renderChatsList();
+
+            if (activeChatId === chatId) {
+                activeChatId = null;
+                showWelcomeScreen();
+            }
+
+            // Sync with Firestore
+            if (user) {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'keo-ai-app';
+                const chatDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'chats', chatId);
+                try {
+                    await deleteDoc(chatDocRef);
+                } catch(e) {
+                    console.error("Firestore delete error", e);
+                }
+            }
+            showToast("تم حذف المحادثة.");
+        }
+
+        // Sign-In with Email & Password
+        async function handleAuthSubmit(e) {
             e.preventDefault();
             const email = document.getElementById('authEmail').value.trim();
             const password = document.getElementById('authPassword').value;
-            const mode = document.getElementById('authSubmitBtn').dataset.mode || 'login';
+            const tabState = document.getElementById('tabLogin').classList.contains('bg-white') ? 'login' : 'register';
+
+            if (!email || !password) return;
 
             try {
-                if (mode === 'register') {
-                    await createUserWithEmailAndPassword(auth, email, password);
-                    showToast("تم إنشاء حسابك الجديد وتسجيل الدخول بنجاح!");
-                } else {
+                if (tabState === 'login') {
                     await signInWithEmailAndPassword(auth, email, password);
-                    showToast("أهلاً بك مجدداً في KEO AI!");
+                    showToast("تم تسجيل الدخول بنجاح!");
+                } else {
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    showToast("تم إنشاء حسابك الجديد وتفعيله!");
                 }
                 closeAuthModal();
-            } catch (err) {
-                console.error("Auth error", err);
-                showToast("فشلت العملية: " + translateAuthError(err.code), "error");
+            } catch(error) {
+                console.error("Authentication error", error);
+                showToast("تعذر إكمال العملية: " + error.message, "error");
             }
-        };
+        }
 
-        // Google Authentication Login Flow
-        window.handleGoogleSignIn = async function() {
+        // Google Sign-In with Popup
+        async function handleGoogleSignIn() {
             const provider = new GoogleAuthProvider();
             try {
                 await signInWithPopup(auth, provider);
                 showToast("تم تسجيل الدخول بحساب Google بنجاح!");
                 closeAuthModal();
-            } catch (err) {
-                console.error("Google Auth error", err);
-                showToast("تعذر تسجيل الدخول بـ Google: " + err.message, "error");
+            } catch(e) {
+                console.error("Google sign in error", e);
+                showToast("فشل تسجيل الدخول بحساب Google: " + e.message, "error");
             }
-        };
+        }
 
-        // Guest continuous session flow
-        window.continueAsGuest = async function() {
+        // Logout
+        async function handleSignOut() {
             try {
-                await signInAnonymously(auth);
-                isGuestMode = true;
-                showToast("تتابع الآن كزائر. لن يتم حفظ المحادثات سحابياً بعد الخروج.");
-                closeAuthModal();
-            } catch (err) {
-                console.error("Anonymous login failed", err);
-                showToast("تعذر بدء وضع الزائر.", "error");
-            }
-        };
-
-        // Logout action
-        window.handleLogout = async function() {
-            if (confirm("هل تريد بالتأكيد تسجيل الخروج وتغيير الحساب؟")) {
-                try {
-                    await signOut(auth);
-                    currentUser = null;
-                    activeChatId = null;
-                    document.getElementById('chatsListContainer').innerHTML = `<div class="text-center py-6 text-[11px] text-gray-400 font-cairo">سجل الخروج</div>`;
-                    resetToInitialScreen();
-                    openAuthModal();
-                } catch (err) {
-                    showToast("خطأ أثناء تسجيل الخروج.", "error");
-                }
-            }
-        };
-
-        // Update UI components dynamically with auth user info
-        function updateUserProfileUI(user) {
-            const avatar = document.getElementById('userAvatar');
-            const nameEl = document.getElementById('userName');
-            const statusEl = document.getElementById('userStatus');
-
-            if (user.isAnonymous) {
-                avatar.innerHTML = `<i class="fas fa-ghost text-sm"></i>`;
-                avatar.className = "w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-keo-primary text-xs font-bold border border-keo-border shadow-inner";
-                nameEl.innerText = "حساب زائر";
-                statusEl.innerText = "مزامنة سحابية معطلة";
-            } else {
-                avatar.innerHTML = user.photoURL ? `<img src="${user.photoURL}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-check text-xs"></i>`;
-                avatar.className = "w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 text-xs font-bold border border-emerald-200 shadow-inner";
-                nameEl.innerText = user.displayName || user.email.split('@')[0];
-                statusEl.innerText = "متصل سحابياً";
-            }
-        }
-
-        // Firestore Strict Rule path helper
-        function getChatsCollectionPath() {
-            return `artifacts/${appId}/users/${currentUser.uid}/chats`;
-        }
-
-        function getMessagesCollectionPath(chatId) {
-            return `artifacts/${appId}/users/${currentUser.uid}/chats/${chatId}/messages`;
-        }
-
-        // Listen in real-time to active user's chat history matching RULE 1
-        function listenToChatsCollection() {
-            if (!currentUser) return;
-
-            const chatsRef = collection(db, getChatsCollectionPath());
-            
-            // Subscribing to real-time events on Firestore collection
-            onSnapshot(chatsRef, (snapshot) => {
-                activeChatsList = [];
-                snapshot.forEach((doc) => {
-                    activeChatsList.push({ id: doc.id, ...doc.data() });
-                });
-
-                // Sort chats by createdAt field in-memory (RULE 2 compliant: no orderby in query)
-                activeChatsList.sort((a, b) => {
-                    const timeA = a.createdAt?.seconds || 0;
-                    const timeB = b.createdAt?.seconds || 0;
-                    return timeB - timeA;
-                });
-
+                await signOut(auth);
+                user = null;
+                chats = [];
+                saveLocalChatsBackup();
                 renderChatsList();
-            }, (error) => {
-                console.error("Firestore listening error:", error);
-            });
+                showWelcomeScreen();
+                showToast("تم تسجيل الخروج بنجاح.");
+                closeSettings();
+            } catch(e) {
+                console.error("Logout error", e);
+            }
         }
 
-        // Render dynamic list of chats on Sidebar
+        // Bind functions to window object for raw HTML buttons to access them safely
+        window.sendMessage = () => {
+            const el = document.getElementById('promptInput');
+            const txt = el.value.trim();
+            if (txt) {
+                el.value = '';
+                processNewMessage(txt);
+            }
+        };
+
+        window.sendActiveMessage = () => {
+            const el = document.getElementById('activePromptInput');
+            const txt = el.value.trim();
+            if (txt) {
+                el.value = '';
+                processNewMessage(txt);
+            }
+        };
+
+        window.createNewChat = createNewChat;
+        window.deleteChatSession = deleteChatSession;
+        window.handleAuthSubmit = handleAuthSubmit;
+        window.handleGoogleSignIn = handleGoogleSignIn;
+        window.handleSignOut = handleSignOut;
+
+        // Apply preset suggestion templates
+        window.applyPreset = (text) => {
+            document.getElementById('promptInput').value = text;
+            document.getElementById('promptInput').focus();
+        };
+
+        // Select model mockup
+        window.selectModel = (modelName) => {
+            document.getElementById('modelSelectBtn').querySelector('span').innerText = modelName;
+            document.getElementById('modelDropdown').classList.add('hidden');
+        };
+
+        // Toggle dropdown display
+        window.toggleModelDropdown = () => {
+            const dropdown = document.getElementById('modelDropdown');
+            dropdown.classList.toggle('hidden');
+        };
+
+        // Set Active chat from sidebar
+        window.setActiveChat = (chatId) => {
+            activeChatId = chatId;
+            renderActiveChatMessages();
+            renderChatsList();
+        };
+
+        // Render Sidebar chats
         function renderChatsList() {
             const container = document.getElementById('chatsListContainer');
-            if (activeChatsList.length === 0) {
-                container.innerHTML = `<div class="text-center py-6 text-[11px] text-gray-400 font-cairo">لا توجد محادثات سابقة</div>`;
+            if (chats.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-[11px] text-gray-400 font-cairo">لا توجد محادثات نشطة</div>`;
                 return;
             }
 
-            container.innerHTML = '';
-            activeChatsList.forEach((chat) => {
+            container.innerHTML = chats.map(chat => {
                 const isActive = chat.id === activeChatId;
-                const activeClasses = isActive ? "bg-white text-keo-primary font-bold shadow-sm" : "text-keo-secondary hover:bg-gray-200/40";
-                
-                const html = `
-                    <div class="group relative flex items-center justify-between rounded-lg p-2 text-xs transition duration-200 cursor-pointer ${activeClasses}" onclick="loadChatThread('${chat.id}')">
-                        <span class="truncate font-cairo block pl-6 select-none max-w-[170px] text-right text-[11px]">${chat.title || 'محادثة غير مسماة'}</span>
-                        <button onclick="event.stopPropagation(); deleteChatThread('${chat.id}')" class="absolute left-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 transition text-[10px]" title="مسح">
-                            <i class="fas fa-trash"></i>
+                return `
+                    <div onclick="setActiveChat('${chat.id}')" 
+                         class="group flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition ${isActive ? 'bg-zinc-200/50 text-zinc-900 font-semibold' : 'hover:bg-zinc-100 text-zinc-600'}">
+                        <div class="flex items-center gap-2 truncate">
+                            <i class="far fa-comment-alt text-[11px] shrink-0 text-zinc-400"></i>
+                            <span class="text-xs truncate text-right font-cairo w-36">${chat.title}</span>
+                        </div>
+                        <button onclick="deleteChatSession('${chat.id}', event)" class="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-zinc-200 text-zinc-400 hover:text-red-500 transition shrink-0">
+                            <i class="fas fa-trash-alt text-[10px]"></i>
                         </button>
                     </div>
                 `;
-                container.insertAdjacentHTML('beforeend', html);
-            });
+            }).join('');
         }
 
-        // Load a specific chat session thread
-        window.loadChatThread = async function(chatId) {
-            activeChatId = chatId;
-            renderChatsList();
+        // Render current active chat screen
+        function renderActiveChatMessages() {
+            const welcome = document.getElementById('welcomeContainer');
+            const messagesWrap = document.getElementById('messagesContainer');
+            const stickyInput = document.getElementById('activeInputContainer');
 
-            // Toggle UI states
-            document.getElementById('welcomeState').classList.add('hidden');
-            document.getElementById('chatState').classList.remove('hidden');
-            document.getElementById('floatingChatInputBar').classList.remove('hidden');
-
-            const messagesRef = collection(db, getMessagesCollectionPath(chatId));
-            
-            // Retrieve messages and sort in-memory (conforming to RULE 2)
-            try {
-                const querySnapshot = await getDocs(messagesRef);
-                const messages = [];
-                querySnapshot.forEach((doc) => {
-                    messages.push({ id: doc.id, ...doc.data() });
-                });
-
-                messages.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
-                
-                const messagesContainer = document.getElementById('messagesContainer');
-                messagesContainer.innerHTML = '';
-
-                messages.forEach((msg) => {
-                    appendMessageCardToContainer(msg.role, msg.content, false);
-                });
-
-                scrollToBottom();
-            } catch (err) {
-                console.error("Error loading messages:", err);
-                showToast("عذراً، فشل تحميل تفاصيل المحادثة.", "error");
-            }
-        };
-
-        // Create a new blank chat session doc on Firestore
-        window.createNewChat = async function() {
-            if (!currentUser) return;
-            activeChatId = null;
-            resetToInitialScreen();
-            showToast("تم فتح جلسة محادثة جديدة جاهزة للكتابة.");
-        };
-
-        function resetToInitialScreen() {
-            document.getElementById('welcomeState').classList.remove('hidden');
-            document.getElementById('chatState').classList.add('hidden');
-            document.getElementById('floatingChatInputBar').classList.add('hidden');
-            document.getElementById('promptInput').value = '';
-            document.getElementById('floatingPromptInput').value = '';
-            document.getElementById('messagesContainer').innerHTML = '';
-        }
-
-        // Delete chat document from store safely
-        window.deleteChatThread = async function(chatId) {
-            if (!confirm("هل تريد بالتأكيد حذف هذه المحادثة بالكامل؟")) return;
-            try {
-                await deleteDoc(doc(db, getChatsCollectionPath(), chatId));
-                showToast("تم مسح المحادثة بنجاح.");
-                if (activeChatId === chatId) {
-                    createNewChat();
-                }
-            } catch (err) {
-                console.error("Error deleting chat document", err);
-                showToast("تعذر إتمام عملية الحذف.", "error");
-            }
-        };
-
-        // Trigger prompt submission either from central welcome box or floating input
-        window.submitPrompt = async function(isFloating = false) {
-            const inputId = isFloating ? 'floatingPromptInput' : 'promptInput';
-            const inputEl = document.getElementById(inputId);
-            const promptText = inputEl.value.trim();
-
-            if (!promptText) return;
-            
-            // Clear text field immediately for responsiveness
-            inputEl.value = '';
-
-            // Ensure we have an active chat session to write into, otherwise create one!
-            if (!activeChatId) {
-                try {
-                    const chatsRef = collection(db, getChatsCollectionPath());
-                    const docRef = await addDoc(chatsRef, {
-                        title: promptText.substring(0, 30) + (promptText.length > 30 ? '...' : ''),
-                        createdAt: new Date()
-                    });
-                    activeChatId = docRef.id;
-                    
-                    // Toggle UI states
-                    document.getElementById('welcomeState').classList.add('hidden');
-                    document.getElementById('chatState').classList.remove('hidden');
-                    document.getElementById('floatingChatInputBar').classList.remove('hidden');
-                } catch (err) {
-                    console.error("Error creating chat session document", err);
-                    showToast("فشل تهيئة جلسة المحادثة على قواعد البيانات.", "error");
-                    return;
-                }
+            const chat = chats.find(c => c.id === activeChatId);
+            if (!chat || chat.messages.length === 0) {
+                showWelcomeScreen();
+                return;
             }
 
-            // Append user's request visually and store it in Firestore
-            await saveAndAppendMessage('user', promptText);
+            welcome.classList.add('hidden');
+            messagesWrap.classList.remove('hidden');
+            stickyInput.classList.remove('hidden');
 
-            // Append typing placeholder animation cards mimicking "الكوكا.jpeg" style
-            const typingPlaceholderId = appendTypingIndicator();
-
-            // Prepare messages array history for full contextual conversation matching
-            const messagesRef = collection(db, getMessagesCollectionPath(activeChatId));
-            let contextHistory = [];
-            
-            try {
-                const querySnapshot = await getDocs(messagesRef);
-                const fetchedMsgs = [];
-                querySnapshot.forEach((doc) => {
-                    fetchedMsgs.push(doc.data());
-                });
-                // Sort in-memory to prevent requiring Firestore indexes (RULE 2)
-                fetchedMsgs.sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
-
-                contextHistory = fetchedMsgs.map(m => ({
-                    role: m.role,
-                    content: m.content
-                }));
-            } catch (err) {
-                console.error("Error fetching context history:", err);
-            }
-
-            // Make the AI completion fetch to Groq API
-            try {
-                const aiResponse = await callKEOAIModel(promptText, contextHistory);
-                
-                // Remove typing indicator visually
-                removeTypingIndicator(typingPlaceholderId);
-
-                // Append and store KEO model completion response
-                await saveAndAppendMessage('assistant', aiResponse);
-
-                // Speak response dynamically if voice response mode is checked
-                if (document.getElementById('voiceToggle').checked) {
-                    speakKEOResponse(aiResponse);
-                }
-
-            } catch (err) {
-                console.error("AI Communication Error:", err);
-                removeTypingIndicator(typingPlaceholderId);
-                await saveAndAppendMessage('assistant', "واجهت مشكلة في معالجة الطلب عبر خوادم Groq. يرجى محاولة صياغة سؤالك مجدداً أو التحقق من الاتصال بالشبكة.");
-            }
-        };
-
-        // Call Groq API with user prompt and conversation history list
-        async function callKEOAIModel(prompt, history) {
-            const url = "https://api.groq.com/openai/v1/chat/completions";
-            
-            // Format model prompt constraints
-            const systemPrompt = {
-                role: "system",
-                content: "أنت المساعد الذكي الموحد KEO. دورك هو تقديم إجابات دقيقة ومفصلة ونقد ذكي وبناء واقتراح أكواد برمجية وحلول عصرية هادئة ومنظمة باللغة العربية والإنجليزية تماشياً مع جمالية التصميم الأبيض والعمل المنظم الفاخر."
-            };
-
-            const payloadMessages = [
-                systemPrompt,
-                ...history
-            ];
-
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${groqApiKey}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    model: "llama-3.3-70b-versatile",
-                    messages: payloadMessages,
-                    temperature: 0.7,
-                    max_tokens: 2000
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error("HTTP connection to Groq API failed.");
-            }
-
-            const data = await response.json();
-            return data.choices[0].message.content.trim();
-        }
-
-        // Save messages directly to nested FireStore collection and update container UI
-        async function saveAndAppendMessage(role, content) {
-            const messagesRef = collection(db, getMessagesCollectionPath(activeChatId));
-            const timestamp = Date.now();
-            
-            try {
-                await addDoc(messagesRef, {
-                    role: role,
-                    content: content,
-                    timestamp: timestamp
-                });
-            } catch (err) {
-                console.error("Firestore message writing failed:", err);
-            }
-
-            appendMessageCardToContainer(role, content, true);
-        }
-
-        // Append visual card for message to the chat arena matching user / assistant styling
-        function appendMessageCardToContainer(role, content, animate = false) {
-            const container = document.getElementById('messagesContainer');
-            const isUser = role === 'user';
-            const bgClass = isUser ? "bg-white border border-keo-border" : "bg-gray-100/50 border border-transparent";
-            const avatarHtml = isUser ? 
-                `<div class="w-8 h-8 rounded-lg bg-keo-primary text-white flex items-center justify-center font-bold text-xs">U</div>` :
-                `<div class="w-8 h-8 rounded-lg bg-keo-primary text-white flex items-center justify-center font-bold text-xs relative shrink-0 shadow-sm">K<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center text-[7px]"><i class="fas fa-bolt text-white"></i></span></div>`;
-            const nameLabel = isUser ? "أنت" : "KEO Assistant";
-            const parsedContent = formatMarkdownToHtml(content);
-
-            const html = `
-                <div class="flex gap-4 p-5 rounded-2xl ${bgClass} transition duration-300 ${animate ? 'animate-fade-in' : ''}">
-                    ${avatarHtml}
-                    <div class="flex-1 flex flex-col gap-1.5 text-right">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold text-keo-primary font-cairo">${nameLabel}</span>
-                            <button onclick="copyTextValue(this)" class="text-gray-400 hover:text-keo-primary transition text-[10px]" title="نسخ">
-                                <i class="fas fa-copy"></i> نسخ
-                            </button>
-                        </div>
-                        <div class="text-xs text-keo-secondary leading-relaxed whitespace-pre-line font-sans space-y-2 mt-1">
-                            ${parsedContent}
+            messagesWrap.innerHTML = chat.messages.map(msg => {
+                const isAssistant = msg.role === 'assistant';
+                return `
+                    <div class="flex gap-4 ${isAssistant ? 'justify-start' : 'justify-end'} animate-fade-in text-right">
+                        ${isAssistant ? `
+                            <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white font-bold text-xs shrink-0 shadow-sm">
+                                K
+                            </div>
+                        ` : ''}
+                        
+                        <div class="max-w-[80%] rounded-2xl p-3.5 text-xs leading-relaxed border ${
+                            isAssistant 
+                            ? 'bg-zinc-50 border-keo-border text-zinc-900' 
+                            : 'bg-zinc-900 border-zinc-950 text-white'
+                        }">
+                            <div class="font-semibold text-[10px] mb-1 text-zinc-400 block">${isAssistant ? 'كيو (KEO)' : 'أنت'}</div>
+                            <p class="whitespace-pre-line font-sans">${formatMarkdown(msg.content)}</p>
                         </div>
                     </div>
-                </div>
-            `;
-            container.insertAdjacentHTML('beforeend', html);
-            scrollToBottom();
+                `;
+            }).join('');
+
+            // Scroll automatically to bottom
+            const scrollArea = document.getElementById('chatArenaScroll');
+            scrollArea.scrollTop = scrollArea.scrollHeight;
         }
 
-        // Append a typing placeholder loading state card
+        function showWelcomeScreen() {
+            document.getElementById('welcomeContainer').classList.remove('hidden');
+            document.getElementById('messagesContainer').classList.add('hidden');
+            document.getElementById('activeInputContainer').classList.add('hidden');
+        }
+
+        // Render typing loader indicator element
         function appendTypingIndicator() {
             const container = document.getElementById('messagesContainer');
-            const uniqueId = "typing_" + Date.now();
+            container.classList.remove('hidden');
+            document.getElementById('welcomeContainer').classList.add('hidden');
 
-            const html = `
-                <div id="${uniqueId}" class="flex gap-4 p-5 rounded-2xl bg-gray-100/40 border border-transparent animate-pulse">
-                    <div class="w-8 h-8 rounded-lg bg-keo-primary text-white flex items-center justify-center font-bold text-xs">K</div>
-                    <div class="flex-1 flex flex-col gap-2 text-right">
-                        <span class="text-xs font-bold text-keo-primary font-cairo">KEO Assistant</span>
-                        <div class="flex items-center gap-1.5 py-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-keo-primary animate-bounce" style="animation-delay: 0.1s"></span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-keo-primary animate-bounce" style="animation-delay: 0.2s"></span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-keo-primary animate-bounce" style="animation-delay: 0.3s"></span>
-                            <span class="text-[11px] text-gray-400 font-cairo mr-2">يفكر KEO في رد متناسق الآن...</span>
+            const indicatorHtml = `
+                <div id="keoTypingIndicator" class="flex gap-4 justify-start animate-fade-in text-right">
+                    <div class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center text-white font-bold text-xs shrink-0 shadow-sm">
+                        K
+                    </div>
+                    <div class="max-w-[80%] rounded-2xl p-3.5 text-xs leading-relaxed border bg-zinc-50 border-keo-border text-zinc-900">
+                        <div class="font-semibold text-[10px] mb-1 text-zinc-400 block">كيو (KEO)</div>
+                        <div class="flex items-center gap-1.5 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" style="animation-delay: 0.1s"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" style="animation-delay: 0.2s"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" style="animation-delay: 0.3s"></span>
                         </div>
                     </div>
                 </div>
             `;
-            container.insertAdjacentHTML('beforeend', html);
-            scrollToBottom();
-            return uniqueId;
+            container.insertAdjacentHTML('beforeend', indicatorHtml);
+            const scrollArea = document.getElementById('chatArenaScroll');
+            scrollArea.scrollTop = scrollArea.scrollHeight;
         }
 
-        function removeTypingIndicator(id) {
-            const el = document.getElementById(id);
-            if (el) el.remove();
+        function removeTypingIndicator() {
+            const ind = document.getElementById('keoTypingIndicator');
+            if (ind) ind.remove();
         }
 
-        // Apply suggestions pills text directly to the active prompt input
-        window.applySuggestion = function(text) {
-            const input = document.getElementById('promptInput');
-            input.value = text;
-            input.focus();
-        };
-
-        // Copy code or texts comfortably to clipboard (conforming to sandbox rules)
-        window.copyTextValue = function(btn) {
-            const container = btn.parentElement.nextElementSibling;
-            const textToCopy = container.innerText || container.textContent;
-            
-            const textarea = document.createElement("textarea");
-            textarea.value = textToCopy;
-            textarea.style.position = "fixed";
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                showToast("تم نسخ النص إلى الحافظة!");
-            } catch (err) {
-                showToast("تعذر نسخ النص.", "error");
-            }
-            document.body.removeChild(textarea);
-        };
-
-        // Scroll helper
-        function scrollToBottom() {
-            const container = document.getElementById('chatState').parentElement;
-            container.scrollTop = container.scrollHeight;
+        // Format Markdown code logs
+        function formatMarkdown(text) {
+            // Strong/Bold
+            let res = text.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-zinc-950">$1</strong>');
+            // Bullet points
+            res = res.replace(/^\s*-\s+(.*)/gm, '<li class="list-disc list-inside text-zinc-700 my-1">$1</li>');
+            // Code Blocks
+            res = res.replace(/```([\s\S]*?)```/g, '<pre class="bg-zinc-950 text-zinc-100 p-3 rounded-xl font-mono text-[11px] my-2 text-left overflow-x-auto" dir="ltr"><code>$1</code></pre>');
+            // Inline code snippets
+            res = res.replace(/`([^`\n]+)`/g, '<code class="bg-zinc-100 text-red-500 px-1 py-0.5 rounded font-mono text-[11px] border border-zinc-200">$1</code>');
+            return res;
         }
 
-        // Simple Markdown styler formatting for elegant output cards
-        function formatMarkdownToHtml(text) {
-            let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-keo-primary font-bold font-cairo">$1</strong>');
-            formatted = formatted.replace(/^\s*-\s+(.*)/gm, '<li class="list-disc list-inside mr-2 text-keo-secondary text-xs my-1 font-sans">$1</li>');
-            formatted = formatted.replace(/^\s*\d+\.\s+(.*)/gm, '<li class="list-decimal list-inside mr-2 text-keo-secondary text-xs my-1 font-sans">$1</li>');
-            formatted = formatted.replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-50 border border-keo-border p-4 rounded-xl font-mono text-[11px] text-keo-primary my-2 overflow-x-auto text-left" dir="ltr"><code>$1</code></pre>');
-            formatted = formatted.replace(/`([^`\n]+)`/g, '<code class="bg-gray-100 text-rose-500 px-1.5 py-0.5 rounded font-mono text-[11px] border border-gray-200/50">$1</code>');
-            return formatted;
+        // Update User info card on success
+        function updateUserUI(currUser) {
+            document.getElementById('userName').innerText = currUser.isAnonymous ? "مستخدم ضيف" : currUser.email.split('@')[0];
+            document.getElementById('userEmail').innerText = currUser.isAnonymous ? "اضغط لربط حساب سحابي" : currUser.email;
+            document.getElementById('userAvatar').innerText = currUser.isAnonymous ? "G" : currUser.email.charAt(0).toUpperCase();
         }
 
-        // Initialize Speech synthesis/recognition setup
-        function initSpeechRecognition() {
+        // Speech STT Setup
+        let isSpeechListening = false;
+        let recognition = null;
+
+        function initSpeechSTT() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognition) {
-                console.warn("Speech Recognition not supported in this browser environment.");
-                return;
-            }
+            if (!SpeechRecognition) return;
 
-            speechRecognition = new SpeechRecognition();
-            speechRecognition.continuous = false;
-            speechRecognition.interimResults = false;
-            speechRecognition.lang = 'ar-EG'; // Arabic-Egypt speech locale
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'ar-EG';
 
-            speechRecognition.onstart = () => {
-                isListening = true;
-                toggleSpeechUIState(true);
+            recognition.onstart = () => {
+                isSpeechListening = true;
+                document.getElementById('micIcon').className = "fas fa-microphone-slash text-red-500";
+                document.getElementById('micWave').classList.remove('hidden');
+                showToast("جاري الاستماع لصوتك الآن...");
             };
 
-            speechRecognition.onresult = (event) => {
-                const text = event.results[0][0].transcript;
-                const promptInput = document.getElementById('promptInput');
-                const floatingPromptInput = document.getElementById('floatingPromptInput');
-
-                if (document.getElementById('chatState').classList.contains('hidden')) {
-                    promptInput.value += " " + text;
+            recognition.onresult = (event) => {
+                const speechToText = event.results[0][0].transcript;
+                if (activeChatId) {
+                    document.getElementById('activePromptInput').value += " " + speechToText;
                 } else {
-                    floatingPromptInput.value += " " + text;
+                    document.getElementById('promptInput').value += " " + speechToText;
                 }
-                showToast("تم تحويل صوتك إلى نص بنجاح!");
             };
 
-            speechRecognition.onerror = () => {
-                showToast("فشل التقاط الصوت أو التعرف عليه.", "error");
-                toggleSpeechUIState(false);
+            recognition.onerror = () => {
+                stopSpeechSTTState();
             };
 
-            speechRecognition.onend = () => {
-                isListening = false;
-                toggleSpeechUIState(false);
+            recognition.onend = () => {
+                stopSpeechSTTState();
             };
         }
 
-        window.triggerVoiceRecognition = function() {
-            if (!speechRecognition) {
-                showToast("التعرف على الصوت (STT) غير مدعوم في متصفحك الحالي. يرجى استخدام Chrome.", "error");
+        function toggleSpeech() {
+            if (!recognition) initSpeechSTT();
+            if (!recognition) {
+                showToast("التعرف على الصوت غير مدعوم في متصفحك الحالي.", "error");
                 return;
             }
 
-            if (isListening) {
-                speechRecognition.stop();
+            if (isSpeechListening) {
+                recognition.stop();
             } else {
-                speechRecognition.start();
-            }
-        };
-
-        function toggleSpeechUIState(active) {
-            const micIcon = document.getElementById('micIcon');
-            const micPulse = document.getElementById('micPulse');
-            const floatingMicIcon = document.getElementById('floatingMicIcon');
-            const floatingMicPulse = document.getElementById('floatingMicPulse');
-
-            if (active) {
-                micIcon.className = "fas fa-microphone-slash text-red-500 animate-pulse";
-                micPulse.classList.remove('hidden');
-                floatingMicIcon.className = "fas fa-microphone-slash text-red-500 animate-pulse";
-                floatingMicPulse.classList.remove('hidden');
-            } else {
-                micIcon.className = "fas fa-microphone text-xs";
-                micPulse.classList.add('hidden');
-                floatingMicIcon.className = "fas fa-microphone text-xs";
-                floatingMicPulse.classList.add('hidden');
+                recognition.start();
             }
         }
 
-        // Voice Synthesis Output reader using SpeechSynthesis
-        window.speakKEOResponse = function(text) {
+        function stopSpeechSTTState() {
+            isSpeechListening = false;
+            document.getElementById('micIcon').className = "fas fa-microphone text-xs";
+            document.getElementById('micWave').classList.add('hidden');
+        }
+
+        // Text To Speech Synthesis
+        function speakText(text) {
             if (!('speechSynthesis' in window)) return;
-
-            window.speechSynthesis.cancel(); // Stop ongoing outputs
-
-            const voiceOverlay = document.getElementById('voiceOverlay');
-            voiceOverlay.classList.remove('hidden');
-            voiceOverlay.classList.add('flex');
-
-            // Strip some markdown syntax elements for cleaner TTS
-            const cleanText = text.replace(/[*_`#\-]/g, '');
-
-            speechUtterance = new SpeechSynthesisUtterance(cleanText);
+            window.speechSynthesis.cancel();
             
-            // Auto detect and set Arabic voices
+            const cleanText = text.replace(/[*_`#\-]/g, '');
+            const utterance = new SpeechSynthesisUtterance(cleanText);
             const voices = window.speechSynthesis.getVoices();
             const arVoice = voices.find(v => v.lang.includes('ar'));
-            if (arVoice) speechUtterance.voice = arVoice;
+            if (arVoice) utterance.voice = arVoice;
+            
+            window.speechSynthesis.speak(utterance);
+        }
 
-            speechUtterance.onend = () => {
-                voiceOverlay.classList.add('hidden');
-            };
+        window.toggleSpeech = toggleSpeech;
 
-            speechUtterance.onerror = () => {
-                voiceOverlay.classList.add('hidden');
-            };
-
-            window.speechSynthesis.speak(speechUtterance);
-        };
-
-        window.stopVoiceSynthesis = function() {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-            }
-            document.getElementById('voiceOverlay').classList.add('hidden');
-        };
-
-        // Toast trigger widget
-        window.showToast = function(message, type = "info") {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMessage');
-
-            toastMsg.innerText = message;
-            if (type === 'error') {
-                toast.className = "fixed bottom-6 left-6 bg-red-600 text-white border border-red-600 px-4 py-3 rounded-2xl shadow-xl z-[95] flex items-center gap-3 max-w-sm transition-all duration-300";
+        // Toggle Web Search
+        window.toggleWebSearch = () => {
+            isWebSearchActive = !isWebSearchActive;
+            const btn = document.getElementById('webSearchToggle');
+            if (isWebSearchActive) {
+                btn.classList.add('bg-zinc-900', 'text-white');
+                btn.classList.remove('text-zinc-500');
+                showToast("تم تفعيل البحث الفوري عبر الويب لكيو.");
             } else {
-                toast.className = "fixed bottom-6 left-6 bg-keo-primary text-white border border-keo-primary px-4 py-3 rounded-2xl shadow-xl z-[95] flex items-center gap-3 max-w-sm transition-all duration-300";
+                btn.classList.remove('bg-zinc-900', 'text-white');
+                btn.classList.add('text-zinc-500');
             }
+        };
 
+    </script>
+
+    <!-- Helper Layout Scripts -->
+    <script>
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function switchAuthTab(type) {
+            const isLogin = type === 'login';
+            document.getElementById('tabLogin').className = isLogin 
+                ? 'flex-1 py-2 text-xs font-semibold rounded-lg bg-white shadow-sm transition text-keo-primary' 
+                : 'flex-1 py-2 text-xs font-semibold rounded-lg text-keo-secondary transition';
+            document.getElementById('tabRegister').className = !isLogin 
+                ? 'flex-1 py-2 text-xs font-semibold rounded-lg bg-white shadow-sm transition text-keo-primary' 
+                : 'flex-1 py-2 text-xs font-semibold rounded-lg text-keo-secondary transition';
+            document.getElementById('authSubmitBtn').innerText = isLogin ? 'متابعة وتسجيل الدخول' : 'إنشاء حساب جديد';
+        }
+
+        function continueAsGuest() {
+            closeAuthModal();
+            showToast("تمت المتابعة كزائر سريع.");
+        }
+
+        function openSettings() {
+            document.getElementById('settingsModal').classList.remove('hidden');
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.add('hidden');
+        }
+
+        // Show Toast Notifications
+        function showToast(message, type = "info") {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = message;
             toast.classList.remove('hidden');
             toast.classList.add('flex');
-
             setTimeout(() => {
-                toast.classList.add('hidden');
                 toast.classList.remove('flex');
-            }, 4000);
-        };
+                toast.classList.add('hidden');
+            }, 3000);
+        }
 
-        // Modal triggers
-        window.openAuthModal = function() {
-            document.getElementById('authModal').classList.remove('hidden');
-        };
+        // Capture Enter key behaviors safely
+        function handleTextareaKey(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                window.sendMessage();
+            }
+        }
 
-        window.closeAuthModal = function() {
-            document.getElementById('authModal').classList.add('hidden');
-        };
-
-        window.toggleModelMenu = function() {
-            const menu = document.getElementById('modelDropdown');
-            menu.classList.toggle('hidden');
-        };
-
-        // Helper translation function for Firebase Authentication Errors
-        function translateAuthError(code) {
-            switch (code) {
-                case 'auth/invalid-email':
-                    return 'البريد الإلكتروني المدخل غير صالح.';
-                case 'auth/user-disabled':
-                    return 'هذا المستخدم تم إيقافه.';
-                case 'auth/user-not-found':
-                case 'auth/wrong-password':
-                case 'auth/invalid-credential':
-                    return 'بيانات الدخول خاطئة أو غير مسجلة.';
-                case 'auth/email-already-in-use':
-                    return 'البريد الإلكتروني هذا مستخدم بالفعل من قبل.';
-                case 'auth/weak-password':
-                    return 'كلمة المرور يجب أن لا تقل عن 6 أحرف أو أرقام.';
-                default:
-                    return 'عذراً، حدث خطأ غير متوقع.';
+        function handleActiveInputKey(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                window.sendActiveMessage();
             }
         }
     </script>
